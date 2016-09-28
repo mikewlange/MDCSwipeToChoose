@@ -268,9 +268,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         [self mdc_rotateForTranslation:translation
                      rotationDirection:self.mdc_viewState.rotationDirection];
         [self mdc_executeOnPanBlockForTranslation:translation];
-        [self mdc_rotateForTranslation:translation
-                     rotationDirection:self.mdc_viewState.rotationDirection];
-        [self mdc_executeOnPanBlockForTranslation:translation];
     }
 }
 
