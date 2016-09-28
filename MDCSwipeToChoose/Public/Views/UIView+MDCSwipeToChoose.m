@@ -256,6 +256,22 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         // the updates via the pan block.
         CGPoint translation = [panGestureRecognizer translationInView:view];
         view.center = MDCCGPointAdd(self.mdc_viewState.originalCenter, translation);
+        // Update the position and transform. Then, notify any listeners of
+        // the updates via the pan block.
+        CGPoint translation = [panGestureRecognizer translationInView:view];
+        view.center = MDCCGPointAdd(self.mdc_viewState.originalCenter, translation);
+        if (view.center.x > self.mdc_viewState.originalCenter.x) {
+                    //NSLog(@"Right ");
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isCardMovingLeft"];
+            
+        } else if (view.center.x < self.mdc_viewState.originalCenter.x) {
+                   // NSLog(@"left ");
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isCardMovingLeft"];
+        }
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self mdc_rotateForTranslation:translation
+                     rotationDirection:self.mdc_viewState.rotationDirection];
+        [self mdc_executeOnPanBlockForTranslation:translation];
         [self mdc_rotateForTranslation:translation
                      rotationDirection:self.mdc_viewState.rotationDirection];
         [self mdc_executeOnPanBlockForTranslation:translation];
