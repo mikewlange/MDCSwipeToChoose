@@ -112,6 +112,15 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     [self addGestureRecognizer:panGestureRecognizer];
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint translation = [gestureRecognizer translationInView:self];
+    
+    if (fabs(translation.y) > fabs(translation.x)) { // restrict vertical direction
+        return NO;
+    }
+    
+    return YES;
+}
 #pragma mark Translation
 
 - (void)mdc_finalizePosition {
