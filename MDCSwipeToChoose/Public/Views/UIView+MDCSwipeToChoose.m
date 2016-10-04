@@ -113,7 +113,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer {
-    if ([[gestureRecognizer description] containsString:@"PanGestureRecognizer"] && [[gestureRecognizer.view description] containsString:@"<MDCSwipeView"]) { // only allow this method on MDSSwipeViews  041016
+    if ([[gestureRecognizer description] containsString:@"PanGestureRecognizer"] && [[gestureRecognizer.view description] containsString:@"<MDCSwipeView"]) { // allow this to be run only for MDSSwipeView type views
         CGPoint translation = [gestureRecognizer translationInView:self];
             
         if (fabs(translation.y) > fabs(translation.x)) { // restrict vertical direction
