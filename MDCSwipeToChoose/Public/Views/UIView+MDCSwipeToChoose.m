@@ -133,8 +133,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         case MDCSwipeDirectionLeft: {
             CGPoint translation = MDCCGPointSubtract(self.center,
                                                      self.mdc_viewState.originalCenter);
-            [self mdc_
-             SuperviewFromTranslation:translation];
+            [self mdc_exitSuperviewFromTranslation:translation];
             break;
         }
         case MDCSwipeDirectionNone:
