@@ -68,7 +68,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
     // Finalize upon completion of the animations.
     void (^completion)(BOOL) = ^(BOOL finished) {
-        if (finished) { [self mdc_finalizePositionForDirection:direction]; }
+        if (finished) { [self mdc_finalizePosition]; }
     };
 
     [UIView animateWithDuration:self.mdc_options.swipeAnimationDuration
@@ -133,7 +133,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         case MDCSwipeDirectionLeft: {
             CGPoint translation = MDCCGPointSubtract(self.center,
                                                      self.mdc_viewState.originalCenter);
-            [self mdc_exitSuperviewFromTranslation:translation];
+            [self mdc_
+             SuperviewFromTranslation:translation];
             break;
         }
         case MDCSwipeDirectionNone:
@@ -157,7 +158,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                          }
                      }];
 }
-
 - (void)mdc_exitSuperviewFromTranslation:(CGPoint)translation {
     MDCSwipeDirection direction = [self mdc_directionOfExceededThreshold];
     id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
