@@ -33,6 +33,7 @@
 - (void)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction
          yes:(void (^)(void))yes
           no:(void (^)(void))no;
+- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction;
 
 /*!
  * Sent after a choice is made. When using the default `MDCSwipeOptions`, the `view`
